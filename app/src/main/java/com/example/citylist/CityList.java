@@ -2,6 +2,7 @@ package com.example.citylist;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -32,4 +33,52 @@ public class CityList {
         Collections.sort(cityList);
         return cityList;
     }
+    public void delete(City city)//Method to delete city from citylist
+    {
+        if(!cities.contains(city))//if the list does not contain any city then statement becomes true
+        {
+            throw new IllegalArgumentException();
+        }
+        cities.remove(city);
+    }
+    public int count()
+    {
+        return cities.size();//list.size() to return list size
+    }
+
+    public List<City> getCitiesSort(boolean flag)
+    {
+        /*
+
+        this method will return a list and this method
+        takes a boolean parameter
+        if the flag ==false then it will sort by statename
+        if the flag ==true then it will sort by province name
+         */
+        List<City> cityList=cities;
+
+        if(flag==false)
+        {
+            Collections.sort(cityList);
+            return cityList;
+        }
+        else
+        {
+            Collections.sort(cityList,new Comparator<City>()
+            {
+                /*
+                here collections.sort takes two parameters first one is list and second one how to perform
+                sorting on that list.Comparator is overrode and compareTo method is used to
+                compare two object's province name
+                 */
+
+                @Override
+                public int compare(City city, City t1) {
+                    return city.getProvinceName().compareTo(t1.getProvinceName());
+                }
+            });
+        }
+        return cityList;//finally returns the sorted list according to province name
+    }
+
 }
