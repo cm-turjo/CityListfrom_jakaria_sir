@@ -13,7 +13,7 @@ public class CityList {
 
     /**
      * This adds a city to the list if that city does not exist
-     * @param city
+     * @param city parameter city object of CITY
      *      This is the city to add
      */
     public void add(City city) {
@@ -25,7 +25,7 @@ public class CityList {
 
     /**
      * This returns a sorted list of cities
-     * @return
+     * @return citylist with cities sorted by cities name.
      *      Return the sorted list of cities
      */
     public List<City> getCities() {
@@ -33,6 +33,8 @@ public class CityList {
         Collections.sort(cityList);
         return cityList;
     }
+
+
     public void delete(City city)//Method to delete city from citylist
     {
         if(!cities.contains(city))//if the list does not contain any city then statement becomes true
@@ -41,6 +43,16 @@ public class CityList {
         }
         cities.remove(city);
     }
+
+    /**
+     * this method will return a list and this method
+     *         takes a boolean parameter
+     *         if the flag ==false then it will sort by statename
+     *         if the flag ==true then it will sort by province name
+     * @return a list consisting cities of cityname and province name
+     */
+
+
     public int count()
     {
         return cities.size();//list.size() to return list size
@@ -48,13 +60,7 @@ public class CityList {
 
     public List<City> getCitiesSort(boolean flag)
     {
-        /*
 
-        this method will return a list and this method
-        takes a boolean parameter
-        if the flag ==false then it will sort by statename
-        if the flag ==true then it will sort by province name
-         */
         List<City> cityList=cities;
 
         if(flag==false)

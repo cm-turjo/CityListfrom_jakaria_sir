@@ -80,6 +80,10 @@ public class CityListTest {
         });
     }
 
+    /**
+     * This is used to be blank
+     */
+
     @Test
     public void testCount()//unit test for count
     {
