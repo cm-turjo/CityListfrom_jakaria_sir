@@ -76,4 +76,38 @@ public class MainActivityTest {
         Espresso.pressBack(); //Back button
     }
 
+    @Test
+    public void UITest()//method for doing UI Test
+    {
+
+        onView(withId(R.id.button_add)).perform(click());//click add button to add city to the list
+        onView(withId(R.id.editText_name)).perform(ViewActions.typeText("Edmonton")); //Type a city name
+        onView(withId(R.id.button_confirm)).perform(click()); //Confirm the city name and add to the list
+
+
+        onView(withId(R.id.button_add)).perform(click());//click add button to add city to the list
+        onView(withId(R.id.editText_name)).perform(ViewActions.typeText("Khulna")); //Type a city name
+        onView(withId(R.id.button_confirm)).perform(click()); //Confirm the city name and add to the list
+
+
+
+        onView(withId(R.id.button_add)).perform(click());//click add button to add city to the list
+        onView(withId(R.id.editText_name)).perform(ViewActions.typeText("Dhaka")); //Type a city name
+        onView(withId(R.id.button_confirm)).perform(click()); //Confirm the city name and add to the list
+
+
+        onView(withId(R.id.button_add)).perform(click());//click add button to add city to the list
+        onView(withId(R.id.editText_name)).perform(ViewActions.typeText("Lalmonirhat")); //Type a city name
+        onView(withId(R.id.button_confirm)).perform(click()); //Confirm the city name and add to the list
+
+        onData(anything()).inAdapterView(withId(R.id.city_list)).atPosition(3).perform(click()); //Check the content on the list - no content in this case
+
+        onView(withText("Lalmonirhat")).check(matches(isDisplayed()));//checks whether displayed string on the
+        //new activity is matched with given string
+        onView(withId(R.id.button)).perform(click());
+
+        onView(withId(R.id.mainactivity)).check(matches(isDisplayed()));//checks whether displayed activity on the
+        //is matched with given string
+    }
+
 }
